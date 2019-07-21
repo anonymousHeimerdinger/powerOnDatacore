@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Solution power on Datacore</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Eater" rel="stylesheet">
+    <script type="text/javascript" src="jquery/jquery.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+    <div id="wrapper" style="margin: auto;">
+        <main>
+
+            <section id="sectionLogs">
+                <form action="#" method="get">
+                    <ol>
+                        <li class="structInput" id="liSite">
+                            <label for="site">Site</label>
+                            <input type="text" id="site" name="site" placeholder="XXX" />
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="structInput">
+                                    <label for="host1">host 1</label>
+                                    <input type="text" id="host1" name="host1" value="svm01" required/>
+                                </li>
+                                <li class="structInput">
+                                    <label for="powerOffHost1">power off</label>
+                                    <input type="checkbox" id="powerOffHost1" name="powerOffHost1" checked>
+                                    <i id="iHost1" class="fas fa-plug"></i>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="structInput">
+                                    <label for="host2">host 2</label>
+                                    <input type="text" id="host2" name="host2" value="svm02" required/>
+                                </li>
+                                <li class="structInput">
+                                    <label for="powerOffHost2">power off</label>
+                                    <input type="checkbox" id="powerOffHost2" name="powerOffHost2" checked>
+                                    <i id="iHost2" class="fas fa-plug"></i>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="structInput">
+                                    <label for="core1">CORE01</label>
+                                    <input type="text" id="core1" name="core1" value="CORE01" required/>
+                                </li>
+                                <li class="structInput">
+                                    <label for="powerOffCore1">power off</label>
+                                    <input type="checkbox" id="powerOffCore1" name="powerOffCore1" checked>
+                                    <i id="iCore1" class="fas fa-plug"></i>
+                                </li>
+                                <li class="structInput" id="liTimeCore1">
+                                    <label for="timeAgoHost1">minutes ago</label>
+                                    <input type="number" id="timeAgoCore1" name="timeAgoCore1" />
+                                    <i class="fas fa-clock"></i>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li class="structInput">
+                                    <label for="core2">CORE02</label>
+                                    <input type="text" id="core2" name="core2" value="CORE02" required/>
+                                </li>
+                                <li class="structInput">
+                                    <label for="powerOffCore2">power off</label>
+                                    <input type="checkbox" id="powerOffCore2" name="powerOffCore2" checked>
+                                    <i id="iCore2" class="fas fa-plug"></i>
+                                </li>
+                                <li class="structInput" id="liTimeCore2">
+                                    <label for="timeAgoCore2">minutes ago</label>
+                                    <input type="number" id="timeAgoCore2" name="timeAgoCore2" />
+                                    <i class="fas fa-clock"></i>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="structInput" id="liButtonUpdate">
+                            <button id="update">Update state</button>
+                            <i id="updatePressed" class="fas fa-spinner fa-pulse"></i>
+                        </li>
+                    </ol>
+                    <section id="stateCurrent">
+                        <h2 id="stateTitle">State current</h2>
+                        <ol id="olCurrentState">
+                            <li id="viewHost1" class="elemX"><span></span>
+                                <p>svm01</p>
+                            </li>
+                            <li id="viewHost2" class="elemX"><span></span>
+                                <p>svm02</p>
+                            </li>
+                            <li id="viewCore1" class="elemX"><span></span>
+                                <p>CORE01</p>
+                            </li>
+                            <li id="viewCore2" class="elemX"><span></span>
+                                <p>CORE02</p>
+                            </li>
+                            <li class="structInput" id="liButtonValidate">
+                                <button id="btnValidate">Confirm state</button>
+                                <i id="validatePressed" class="fas fa-spinner fa-pulse"></i>
+                            </li>
+                        </ol>
+                    </section>
+
+                </form>
+
+            </section>
+
+            <section id="sectionSolution">
+                <h1>Steps - to - start - Datacore - site</h1>
+                <ol>
+                    <li id="process0">
+                        <p>to wait the battery is to 80% loaded to realyze the power on</p>
+                    </li>
+                    <li id="process1">
+                        <p id="pId1"></p>
+                    </li>
+                    <li id="process2">
+                        <p id="pId2"></p>
+                    </li>
+                    <li id="process3">
+                        <p id="pId3"></p>
+                    </li>
+                    <li id="process4">
+                        <p id="pId4"></p>
+                    </li>
+                    <li id="process5">
+                        <p id="pId5"></p>
+                    </li>
+
+                    <li id="process6">
+                        <p id="pId6"></p>
+                    </li>
+
+                    <li id="process7">
+                        <p id="pId7"></p>
+                    </li>
+
+                    <li id="process8">
+                        <p id="pId8"></p>
+                    </li>
+
+                    <li id="process9">
+                        <p id="pId9"></p>
+                    </li>
+
+                    <li id="process10">
+                        <p id="pId10"></p>
+                    </li>
+
+                    <li id="process11">
+                        <p id="pId11"></p>
+                    </li>
+
+                    <li id="process12">
+                        <p id="pId12"></p>
+                    </li>
+
+                    <li id="process13">
+                        <p id="pId13"></p>
+                    </li>
+
+                    <li id="process14">
+                        <p id="pId14"></p>
+                    </li>
+
+                    <li id="process15">
+                        <p id="pId15"></p>
+                    </li>
+
+                </ol>
+                <p id="isSolved"></p>
+
+            </section>
+
+            <script type="text/javascript">
+                $('#stateCurrent').hide();
+
+                $(document).ready(function() {
+
+                    var isHost1Checked;
+                    var isHost2Checked;
+                    var isCore1Checked;
+                    var isCore2Checked;
+                    var nameHost1;
+                    var nameHost2;
+                    var nameCore1;
+                    var nameCore2;
+                    var timeCore1;
+                    var timeCore2;
+
+                    $('#iHost1').addClass('red');
+                    $('#iHost2').addClass('red');
+                    $('#iCore1').addClass('red');
+                    $('#iCore2').addClass('red');
+
+
+                    $('#powerOffHost1').change(function() {
+                        if ($(this).is(":checked")) {
+                            $('#iHost1').removeClass('fas fa-power-off').addClass('fas fa-plug').removeClass('green').addClass('red');
+                        } else {
+                            $('#iHost1').removeClass('fas fa-plug').addClass('fas fa-power-off').removeClass('red').addClass('green');
+                        }
+                    });
+
+                    $('#powerOffHost2').change(function() {
+                        if ($(this).is(":checked")) {
+                            $('#iHost2').removeClass('fas fa-power-off').addClass('fas fa-plug').removeClass('green').addClass('red');
+                        } else {
+                            $('#iHost2').removeClass('fas fa-plug').addClass('fas fa-power-off').removeClass('red').addClass('green');
+                        }
+                    });
+
+
+                    function clearSolution() {
+                        $('#process1 p').html('');
+                        $('#process2 p').html('');
+                        $('#process3 p').html('');
+                        $('#process4 p').html('');
+                        $('#process5 p').html('');
+                        $('#process6 p').html('');
+                        $('#process7 p').html('');
+                        $('#process8 p').html('');
+                        $('#process9 p').html('');
+                        $('#process10 p').html('');
+                        $('#process11 p').html('');
+                        $('#process12 p').html('');
+                        $('#process13 p').html('');
+                        $('#process14 p').html('');
+                        $('#process15 p').html('');
+                        $('#isSolved').html('');
+                    }
+
+                    function clearColours() {
+                        $('#process0').removeClass('paintGreen');
+                        $('#process1').removeClass('paintGreen');
+                        $('#process2').removeClass('paintGreen');
+                        $('#process3').removeClass('paintGreen');
+                        $('#process4').removeClass('paintGreen');
+                        $('#process5').removeClass('paintGreen');
+                        $('#process6').removeClass('paintGreen');
+                        $('#process7').removeClass('paintGreen');
+                        $('#process8').removeClass('paintGreen');
+                        $('#process9').removeClass('paintGreen');
+                        $('#process10').removeClass('paintGreen');
+                        $('#process11').removeClass('paintGreen');
+                        $('#process12').removeClass('paintGreen');
+                        $('#process13').removeClass('paintGreen');
+                        $('#process14').removeClass('paintGreen');
+                        $('#process15').removeClass('paintGreen');
+
+                        $('#process0').removeClass('paintPink');
+                        $('#process1').removeClass('paintPink');
+                        $('#process2').removeClass('paintPink');
+                        $('#process3').removeClass('paintPink');
+                        $('#process4').removeClass('paintPink');
+                        $('#process5').removeClass('paintPink');
+                        $('#process6').removeClass('paintPink');
+                        $('#process7').removeClass('paintPink');
+                        $('#process8').removeClass('paintPink');
+                        $('#process9').removeClass('paintPink');
+                        $('#process10').removeClass('paintPink');
+                        $('#process11').removeClass('paintPink');
+                        $('#process12').removeClass('paintPink');
+                        $('#process13').removeClass('paintPink');
+                        $('#process14').removeClass('paintPink');
+                        $('#process15').removeClass('paintPink');
+                    }
+
+                    function hideSolution() {
+
+                        $('#process1').hide();
+                        $('#process2').hide();
+                        $('#process3').hide();
+                        $('#process4').hide();
+                        $('#process5').hide();
+                        $('#process6').hide();
+                        $('#process7').hide();
+                        $('#process8').hide();
+                        $('#process9').hide();
+                        $('#process10').hide();
+                        $('#process11').hide();
+                        $('#process12').hide();
+                        $('#process13').hide();
+                        $('#process14').hide();
+                        $('#process15').hide();
+                        $('#isSolved').hide();
+                    }
+
+                    hideSolution();
+
+
+                    $('#powerOffCore1').change(function() {
+                        if ($(this).is(":checked")) {
+                            $('#liTimeCore1').show();
+                            $('#iCore1').removeClass('fas fa-power-off').addClass('fas fa-plug').removeClass('green').addClass('red');
+                        } else {
+                            $('#liTimeCore1').hide();
+                            $('#iCore1').removeClass('fas fa-plug').addClass('fas fa-power-off').removeClass('red').addClass('green');
+                        }
+                    });
+
+                    $('#powerOffCore2').change(function() {
+                        if ($(this).is(":checked")) {
+                            $('#liTimeCore2').show();
+                            $('#iCore2').removeClass('fas fa-power-off').addClass('fas fa-plug').removeClass('green').addClass('red');
+
+                        } else {
+                            $('#liTimeCore2').hide();
+                            $('#iCore2').removeClass('fas fa-plug').addClass('fas fa-power-off').removeClass('red').addClass('green');
+                        }
+                    });
+
+                    $('#site').change(function() {
+                        if ($(this).val != "") {
+                            var value = $(this).val() + $('#host1').val();
+                            $('#host1').val(value.toLowerCase());
+                            value = $(this).val() + $('#host2').val();
+                            $('#host2').val(value.toLowerCase());
+                            value = $(this).val() + $('#core1').val();
+                            $('#core1').val(value.toUpperCase());
+                            value = $(this).val() + $('#core2').val();
+                            $('#core2').val(value.toUpperCase());
+                            $(this).hide();
+                            $(this).after("<h2>" + $(this).val() + "</h2>");
+                            $('#stateCurrent').hide();
+                        }
+                    });
+
+                    $('#host1').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+                    $('#host2').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+                    $('#core1').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+                    $('#core2').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+                    $('#powerOffHost1').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+                    $('#powerOffHost1').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+                    $('#powerOffHost2').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+                    $('#powerOffCore1').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+                    $('#powerOffCore2').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+                    $('#timeAgoCore1').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+                    $('#timeAgoCore2').focusin(function() {
+                        $('#stateCurrent').hide();
+                    });
+
+
+                    function isValidateTime() {
+                        var isCheckedCore1 = false;
+                        var isCheckedCore2 = false;
+
+                        if ($('#powerOffCore1').is(":checked")) {
+                            timeCore1 = $('#timeAgoCore1').val();
+                            isCheckedCore1 = true;
+
+                            if (timeCore1 == "") {
+                                return false;
+                            }
+                        }
+
+                        if ($('#powerOffCore2').is(":checked")) {
+                            timeCore2 = $('#timeAgoCore2').val();
+                            isCheckedCore2 = true;
+
+                            if (timeCore2 == "") {
+                                return false;
+                            }
+                        }
+
+                        if (isCheckedCore1 && isCheckedCore2) {
+                            if (timeCore1 == timeCore2) {
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
+
+                        return true;
+
+                    }
+
+                    function isValidateNames() {
+                        if ($('#host1').val() == "" || $('#host2').val() == "" ||
+                            $('#core1').val() == "" || $('#core2').val() == "") {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+
+                    function changeClassColor() {
+
+                        isHost1Checked = $('#powerOffHost1').is(":checked");
+
+                        if (isHost1Checked) {
+                            $('#olCurrentState #viewHost1 span').removeClass('ballGreen').addClass('ballRed');
+                            $('#olCurrentState #viewHost1 p').removeClass('ballGreen').addClass('ballRed');
+                        } else {
+                            $('#olCurrentState #viewHost1 span').removeClass('ballRed').addClass('ballGreen');
+                            $('#olCurrentState #viewHost1 p').removeClass('ballRed').addClass('ballGreen');
+                        }
+
+                        isHost2Checked = $('#powerOffHost2').is(":checked");
+
+                        if (isHost2Checked) {
+                            $('#olCurrentState #viewHost2 span').removeClass('ballGreen').addClass('ballRed');
+                            $('#olCurrentState #viewHost2 p').removeClass('ballGreen').addClass('ballRed');
+                        } else {
+                            $('#olCurrentState #viewHost2 span').removeClass('ballRed').addClass('ballGreen');
+                            $('#olCurrentState #viewHost2 p').removeClass('ballRed').addClass('ballGreen');
+                        }
+
+                        isCore1Checked = $('#powerOffCore1').is(":checked");
+
+                        if (isCore1Checked) {
+                            $('#olCurrentState #viewCore1 span').addClass('ballRed').removeClass('ballGreen');
+                            $('#olCurrentState #viewCore1 p').addClass('ballRed').removeClass('ballGreen');
+                        } else {
+                            $('#olCurrentState #viewCore1 span').addClass('ballGreen').removeClass('ballRed');
+                            $('#olCurrentState #viewCore1 p').addClass('ballGreen').removeClass('ballRed');
+                        }
+
+                        isCore2Checked = $('#powerOffCore2').is(":checked");
+
+                        if (isCore2Checked) {
+                            $('#olCurrentState #viewCore2 span').addClass('ballRed').removeClass('ballGreen');
+                            $('#olCurrentState #viewCore2 p').addClass('ballRed').removeClass('ballGreen');
+                        } else {
+                            $('#olCurrentState #viewCore2 span').addClass('ballGreen').removeClass('ballRed');
+                            $('#olCurrentState #viewCore2 p').addClass('ballGreen').removeClass('ballRed');
+                        }
+
+                    }
+
+                    function changeNamesOnView() {
+                        nameHost1 = $('#host1').val();
+                        $('#viewHost1 p').html(nameHost1);
+
+                        nameHost2 = $('#host2').val();
+                        $('#viewHost2 p').html(nameHost2);
+
+                        nameCore1 = $('#core1').val();
+                        $('#viewCore1 p').html(nameCore1);
+
+                        nameCore2 = $('#core2').val();
+                        $('#viewCore2 p').html(nameCore2);
+
+                    }
+
+                    $('#updatePressed').fadeOut();
+                    $('#update').click(function(event) {
+                        $('#updatePressed').fadeIn().delay(500).fadeOut();
+                        event.preventDefault();
+                        hideSolution();
+                        clearColours();
+                        changeClassColor();
+                        changeNamesOnView();
+                        var bool1 = isValidateTime();
+                        var bool2 = isValidateNames();
+
+                        if (bool1 && bool2) {
+                            $('#stateCurrent').show();
+                        }
+                    });
+
+                    /*
+                    var isHost1Checked;
+                    var isHost2Checked;
+                    var isCore1Checked;
+                    var isCore2Checked;
+                    var nameHost1;
+                    var nameHost2;
+                    var nameCore1;
+                    var nameCore2;
+                    var timeCore1;
+                    var timeCore2;
+                    */
+                    function displayProcess() {
+                        //xx xx  4 v
+                        //00 00  4 V
+                        //xx x0  1 F
+                        //xx 0x  1 F
+                        //x0 xx  1
+                        //0x xx  1
+                        //xx 00  2 VF
+                        //x0 x0  2 
+                        //0x x0  2 F
+                        //x0 0x  2 F
+                        //0x 0x  2
+                        //00 xx  2
+                        //x0 00  3 VF
+                        //0x 00  3 VF
+                        //00 x0  3
+                        //00 0x  3
+                        var vectorP = $('#sectionSolution ol li p');
+                        var vectorLi = $('#sectionSolution ol li');
+                        var i = 1;
+
+
+                        if (!isHost1Checked && !isHost2Checked && !isCore1Checked && !isCore2Checked) {
+                            $('#isSolved').html("We not observe there is a problem").show();
+                            return -1;
+                        }
+
+                        if (isCore1Checked && isCore2Checked) {
+                            if (timeCore1 > timeCore2) {
+                                if (isHost2Checked) {
+                                    $("#" + vectorP[i].id).html("Turn on the host " + nameHost2 +
+                                        ". Please, after, wait some time to check if the machine " +
+                                        nameCore2 + " turn on automatically");
+                                    $("#" + vectorLi[i].id).show();
+
+                                    ++i;
+                                }
+                                $("#" + vectorP[i].id).html("Turn on the machine " + nameCore2);
+                                $("#" + vectorLi[i].id).show();
+                                ++i;
+                                if (isHost1Checked) {
+                                    $("#" + vectorP[i].id).html("Turn on the host " + nameHost1 +
+                                        ". Please, after, wait some time to check if the machine " +
+                                        nameCore1 + " turn on automatically");
+                                    $("#" + vectorLi[i].id).show();
+                                    ++i;
+                                }
+                                $("#" + vectorP[i].id).html("Turn on the machine " + nameCore1);
+                                $("#" + vectorLi[i].id).show();
+                                ++i;
+                            } else {
+                                if (isHost1Checked) {
+                                    $("#" + vectorP[i].id).html("Turn on the host " + nameHost1 +
+                                        ". Please, after, wait some time to check if the machine " +
+                                        nameCore1 + " turn on automatically");
+                                    $("#" + vectorLi[i].id).show();
+                                    ++i;
+                                }
+                                $("#" + vectorP[i].id).html("Turn on the machine " + nameCore1);
+                                $("#" + vectorLi[i].id).show();
+                                ++i;
+                                if (isHost2Checked) {
+                                    $("#" + vectorP[i].id).html("Turn on the host " + nameHost2 +
+                                        ". Please, after, wait some time to check if the machine " +
+                                        nameCore2 + " turn on automatically");
+                                    $("#" + vectorLi[i].id).show();
+                                    ++i;
+                                }
+                                $("#" + vectorP[i].id).html("Turn on the machine " + nameCore2);
+                                $("#" + vectorLi[i].id).show();
+                                ++i;
+                            }
+                            return i;
+                        }
+
+                        if (!isCore1Checked && isHost1Checked) {
+                            $('#isSolved').html("Please, prove that all information is correct." +
+                                " If core01 belonging to host1, then core1 is off").show();
+                            return -1;
+                        }
+
+                        if (!isCore2Checked && isHost2Checked) {
+                            $('#isSolved').html("Please, prove that all information is correct." +
+                                " If core02 belonging to host2, then core1 is off").show();
+                            return -1;
+                        }
+
+                        if (!isHost1Checked && !isHost2Checked && !isCore1Checked && isCore2Checked) {
+                            $("#" + vectorP[i].id).html("Turn on the machine " + nameCore2);
+                            $("#" + vectorLi[i].id).show();
+                            ++i;
+                            return i;
+                        }
+
+                        if (!isHost1Checked && !isHost2Checked && isCore1Checked && !isCore2Checked) {
+                            $("#" + vectorP[i].id).html("Turn on the machine " + nameCore1);
+                            $("#" + vectorLi[i].id).show();
+                            ++i;
+                            return i;
+                        }
+
+                        if (!isHost2Checked && isCore1Checked && !isCore2Checked) {
+                            if (isHost1Checked) {
+                                $("#" + vectorP[i].id).html("Turn on the host " + nameHost1 +
+                                    ". Please, after, wait some time to check if the machine " +
+                                    nameCore1 + " turn on automatically");
+                                $("#" + vectorLi[i].id).show();
+                                ++i;
+                            }
+                            $("#" + vectorP[i].id).html("Turn on the machine " + nameCore1);
+                            $("#" + vectorLi[i].id).show();
+                            ++i;
+                            return i;
+                        }
+
+                        if (!isHost1Checked && isCore1Checked && !isCore2Checked) {
+                            if (isHost2Checked) {
+                                $("#" + vectorP[i].id).html("Turn on the host " + nameHost2 +
+                                    ". Please, after, wait some time to check if the machine " +
+                                    nameCore2 + " turn on automatically");
+                                $("#" + vectorLi[i].id).show();
+                                ++i;
+                            }
+                            $("#" + vectorP[i].id).html("Turn on the machine " + nameCore2);
+                            $("#" + vectorLi[i].id).show();
+                            ++i;
+                            return i;
+                        }
+
+                        return i;
+
+                    }
+
+                    function displayProcessGeneral(i) {
+
+                        if (i == -1) {
+                            return;
+                        }
+
+                        var vectorP = $('#sectionSolution ol li p');
+                        var vectorLi = $('#sectionSolution ol li');
+
+                        $("#" + vectorP[i].id).html(
+                            "Connect to console of datacore and check that all vdisk are in state 'Up to date'" +
+                            " and check the camp 'alerts'.");
+                        $("#" + vectorLi[i].id).show();
+                        ++i;
+
+                        $("#" + vectorP[i].id).html("* If the stop site has been by electrical cut " +
+                            "and we had to stop manually someone host or machine that they had started automatically," +
+                            " then we have to follow the next step of the wiki: 'Arrancar nodos datacore'.");
+                        $("#" + vectorLi[i].id).show();
+                        ++i;
+
+                        $("#" + vectorP[i].id).html(
+                            "If we observe the host not detect the storage on VCenter, then to realyze a rescan on the cluster and on the servers.");
+                        $("#" + vectorLi[i].id).show();
+                        ++i;
+
+                        $("#" + vectorP[i].id).html(
+                            "If we are sure that all the previous steps are corrects and in state healthy, then " +
+                            "we will turn on the rest of machines in the next order:<br>" +
+                            "XXXVMWLC and XXXVMRIV --> should be the first VM to power on.<br>" +
+                            "XXXVMDCxx (Domain Controller).<br>" +
+                            "XXXvmPRN / FIL (Print / DHCP / File Server).<br>" +
+                            "Applications / DB / Blade Servers.<br>" +
+                            "XXXvmCM (Configuration Manager VM)."
+                        );
+                        $("#" + vectorLi[i].id).show();
+                        ++i;
+
+                        $("#" + vectorP[i].id).html(
+                            "To enable Jobs Veam of the site.");
+                        $("#" + vectorLi[i].id).show();
+                        ++i;
+
+                        $("#" + vectorP[i].id).html(
+                            "From Icinga, To disable the schedule downtime of the site.");
+                        $("#" + vectorLi[i].id).show();
+                        ++i;
+
+                        $("#" + vectorP[i].id).html(
+                            "From Icinga, Check that all services of the machines on the site are monitorizeds correctly.<br>" +
+                            "If someone services stay in state 'UNKNOWN', then review the wiki section 'Incidencias monitorización'.");
+                        $("#" + vectorLi[i].id).show();
+                        ++i;
+
+                    }
+
+                    $('#validatePressed').fadeOut();
+                    $('#btnValidate').click(function(event) {
+                        $('#validatePressed').fadeIn().delay(500).fadeOut();
+                        event.preventDefault();
+                        clearSolution();
+                        clearColours();
+                        hideSolution();
+                        var posLi = displayProcess();
+                        displayProcessGeneral(posLi);
+                    });
+
+
+
+                    $('#sectionSolution ol li').click(function() {
+                        var vectorLi = $('#sectionSolution ol li');
+                        var length = vectorLi.length;
+                        var pos = 0;
+                        while (vectorLi[pos].id != $(this).attr('id') && pos < length) {
+                            ++pos;
+                        }
+
+                        if (pos < length) {
+                            $('#' + vectorLi[pos].id).addClass("paintPink");
+                            $('#' + vectorLi[pos].id).removeClass("paintGreen");
+                            --pos;
+                            for (; pos >= 0; --pos) {
+                                $('#' + vectorLi[pos].id).addClass("paintGreen");
+                                $('#' + vectorLi[pos].id).removeClass("paintPink");
+                            }
+                        }
+
+                    });
+
+                    $('#sectionSolution ol li').dblclick(function() {
+                        var vectorLi = $('#sectionSolution ol li');
+                        var length = vectorLi.length;
+                        var pos = 0;
+                        while (vectorLi[pos].id != $(this).attr('id') && pos < length) {
+                            ++pos;
+                        }
+
+                        if (pos < length) {
+                            $('#' + vectorLi[pos].id).removeClass("paintGreen");
+                            $('#' + vectorLi[pos].id).addClass("paintPink");
+                            ++pos;
+                            for (; pos < length; ++pos) {
+                                $('#' + vectorLi[pos].id).removeClass("paintGreen");
+                                $('#' + vectorLi[pos].id).removeClass("paintPink");
+                            }
+                        }
+                    });
+
+                });
+            </script>
+
+        </main>
+
+    </div>
+
+</body>
+
+<footer>
+    <section>
+        <p id="note"> * Please, wait at least 5 minutes between the first steps for give time to the synchronization of the machines CORE.</p>
+        <p>Forever wait some time between every step. </p>
+        <p>Remember that all the steps are explaineds more detail on the wiki.</p>
+    </section>
+
+</footer>
+
+
+</html>
